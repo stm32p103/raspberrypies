@@ -1,0 +1,5 @@
+{
+  "watch": ["raspi-dist"],
+  "ext": "js",
+  "exec": "node raspi-dist/main.js"
+}
