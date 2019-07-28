@@ -11,7 +11,7 @@
     "start:dev": "nodemon",
     "start:debug": "nodemon --config nodemon-debug.json",
     "build:watch": "tsc -w -p tsconfig.build.json",
-    "raspi:dev": "nodemon --config nodemon-raspi",
+    "raspi:dev": "nodemon --config nodemon-raspi.json",
     "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
