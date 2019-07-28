@@ -7,7 +7,7 @@
     "experimentalDecorators": true,
     "target": "es6",
     "sourceMap": true,
-    "outDir": "./raspi-dist",
+    "outDir": "./dist",
     "baseUrl": "./"
   },
   "exclude": ["node_modules"]
