@@ -22,7 +22,7 @@ export class CardActivitySource {
         nfc.on( 'error',      ( err )  => this.onError( err ) ); 
         nfc.start();
         
-        this.activityObservable = this.activitySubject.pipe( publish() );
+        this.activityObservable = this.activitySubject;
     }
 
     private onTouch( card: any ) {

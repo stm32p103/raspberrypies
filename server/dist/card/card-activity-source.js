@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const rxjs_1 = require("rxjs");
-const operators_1 = require("rxjs/operators");
 const NfcpyId = require('node-nfcpy-id').default;
 let CardActivitySource = class CardActivitySource {
     constructor() {
@@ -21,7 +20,7 @@ let CardActivitySource = class CardActivitySource {
         nfc.on('touchend', (card) => this.onLeave(card));
         nfc.on('error', (err) => this.onError(err));
         nfc.start();
-        this.activityObservable = this.activitySubject.pipe(operators_1.publish());
+        this.activityObservable = this.activitySubject;
     }
     onTouch(card) {
         console.log(card);
