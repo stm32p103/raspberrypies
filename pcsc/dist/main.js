@@ -13,5 +13,15 @@ nfc.on('touchend', () => {
 nfc.on('error', (err) => {
     console.log('ouch');
     console.error('\u001b[31m', err, '\u001b[0m');
+    console.log('----------------------------');
+    let timer = setInterval(() => {
+        try {
+            nfc.start();
+            clearInterval(timer);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }, 1000);
 });
 //# sourceMappingURL=main.js.map
