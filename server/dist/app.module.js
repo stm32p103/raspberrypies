@@ -16,7 +16,7 @@ AppModule = __decorate([
     common_1.Module({
         imports: [],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService, card_1.CardActivityService],
+        providers: [app_service_1.AppService, card_1.CardActivityService, card_1.CardActivitySource],
     })
 ], AppModule);
 exports.AppModule = AppModule;
