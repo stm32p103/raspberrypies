@@ -1,7 +1,8 @@
 const NfcpyId = require('node-nfcpy-id').default;
-const nfc = new NfcpyId( {mode: 'non-touchend'} ).start();
+const nfc = new NfcpyId( {mode: 'non-loop'} );
 
-console.log( 'started' );
+console.log( 'start...' );
+nfc.start();
 
 nfc.on('touchstart', (card) => {
   console.log('Card ID: ' + card.id);
@@ -11,11 +12,13 @@ nfc.on('touchstart', (card) => {
   // 3: FeliCa
   // 4: Mifare (DESFire)
   console.log('Card Type: ' + card.type);
+  
 });
  
 // If the `mode` is `loop` or `non-loop`, event will occur when the card is removed
 nfc.on('touchend', () => {
   console.log('Card was away.');
+  nfc.start();
 });
  
 nfc.on('error', (err) => {
