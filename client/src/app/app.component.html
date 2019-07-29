@@ -9,10 +9,10 @@
                     <th>ID</th>
 		        </tr>
 	        </ng-template>
-	        <ng-template pTemplate="body" let-rowData let-columns="columns">
+	        <ng-template pTemplate="body" let-rowData>
 		        <tr [pSelectableRow]="rowData">
-                    <td>{{ rawData.timestamp | date:"yy/MM/dd HH:mm" }}</td>
-                    <td>{{ rawData.id }}</td>
+                    <td>{{ rowData.timestamp | date:"yy/MM/dd HH:mm" }}</td>
+                    <td>{{ rowData.id }}</td>
 		        </tr>
 	        </ng-template>
 	   </p-table>
