@@ -5,7 +5,6 @@ console.log( 'start' );
 const nfc = new NFC(); // optionally you can pass logger
 console.log( nfc );
 
-console.log(`${reader.reader.name}  device attached`);
 nfc.on('reader', reader => {
 
     console.log(`${reader.reader.name}  device attached`);
