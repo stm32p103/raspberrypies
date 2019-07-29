@@ -36,7 +36,9 @@ export class CardActivitySource {
     }
     
     private onError( err: any ) {
-//        console.log( err );
+        console.log( err );
+        this.nfc.start();   // 再開しておくだけでOK?
+
         this.activitySubject.next( { type: 'error', timestamp: Date.now(), message: err } );
     }
 

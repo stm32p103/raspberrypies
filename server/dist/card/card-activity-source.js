@@ -30,6 +30,8 @@ let CardActivitySource = class CardActivitySource {
         this.activitySubject.next({ type: 'leave', timestamp: Date.now() });
     }
     onError(err) {
+        console.log(err);
+        this.nfc.start();
         this.activitySubject.next({ type: 'error', timestamp: Date.now(), message: err });
     }
     get activity$() { return this.activityObservable; }
