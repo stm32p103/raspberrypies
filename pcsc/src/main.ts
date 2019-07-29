@@ -22,5 +22,6 @@ nfc.on('touchend', () => {
 });
  
 nfc.on('error', (err) => {
+    console.log( 'ouch' )
   console.error('\u001b[31m', err, '\u001b[0m');
 });
