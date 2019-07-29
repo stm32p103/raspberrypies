@@ -65,7 +65,6 @@ var AppComponent = /** @class */ (function () {
     function AppComponent(http) {
         this.http = http;
         this.activities = [];
-        this.activityColumns = ['timestamp', 'event'];
     }
     AppComponent.prototype.update = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {

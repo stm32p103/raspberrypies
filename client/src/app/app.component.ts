@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CardActivity } from './type';
+import { CardTouchActivity } from './type';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +8,14 @@ import { CardActivity } from './type';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    activities: CardActivity[] = [];
-    readonly activityColumns = [ 'timestamp', 'event' ];
+    activities: CardTouchActivity[] = [];
     
     constructor( private http: HttpClient ) {
     }
     async update() {
         const result = await this.http.get( '/card' ).toPromise() ;
         if( result ) {
-            this.activities = result as CardActivity[];
+            this.activities = result as CardTouchActivity[];
         }
     }
     
