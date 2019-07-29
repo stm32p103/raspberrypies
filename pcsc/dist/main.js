@@ -16,7 +16,8 @@ nfc.on('error', (err) => {
     console.log('----------------------------');
     let timer = setInterval(() => {
         try {
-            nfc.start();
+            console.log(nfc.start());
+            console.log('recovered');
             clearInterval(timer);
         }
         catch (err) {
