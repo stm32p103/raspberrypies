@@ -1,6 +1,8 @@
 const NfcpyId = require('node-nfcpy-id').default;
 const nfc = new NfcpyId( { mode: 'non-loop'} ).start();
- 
+
+console.log( 'started' );
+
 nfc.on('touchstart', (card) => {
   console.log('Card ID: ' + card.id);
  
