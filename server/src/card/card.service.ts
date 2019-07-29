@@ -9,7 +9,7 @@ const LENGTH = 10;
 export class CardActivityService {
     latestActivity: CardActivity[] = [];
     constructor( private src: CardActivitySource ) {
-        this.src.activity$.subscribe( act => console.log( act ) );
+        this.src.activity$.subscribe( act => this.onActivity( act ) );
     }
 
     private updateLatestActivity( act: CardActivity ) {

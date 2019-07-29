@@ -16,7 +16,7 @@ let CardActivityService = class CardActivityService {
     constructor(src) {
         this.src = src;
         this.latestActivity = [];
-        this.src.activity$.subscribe(act => console.log(act));
+        this.src.activity$.subscribe(act => this.onActivity(act));
     }
     updateLatestActivity(act) {
         let tmp = [...this.latestActivity, act];
