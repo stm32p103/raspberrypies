@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Observable, Subject, interval  } from 'rxjs';
-import { publish, filter, tap } from 'rxjs/operators';
+import { publish, share, tap } from 'rxjs/operators';
 import { CardActivity } from './type';
 /* ----------------------------------------------------------------------------
  *  暫定: nfcpyを使ったモジュールを作る
@@ -22,7 +22,7 @@ export class CardActivitySource {
         nfc.on( 'error',      ( err )  => this.onError( err ) ); 
         nfc.start();
         
-        this.activityObservable = this.activitySubject;
+        this.activityObservable = this.activitySubject.pipe( share() );
     }
 
     private onTouch( card: any ) {
