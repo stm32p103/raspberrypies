@@ -3,7 +3,7 @@ import { CardActivityService, CardActivity } from './card';
 
 @Controller()
 export class AppController {
-    constructor(private readonly card: CardActivityService) {}
+    constructor( private readonly card: CardActivityService ) {}
     
     @Get()
     root(): CardActivity[] {

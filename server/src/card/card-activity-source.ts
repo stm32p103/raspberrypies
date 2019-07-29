@@ -27,14 +27,17 @@ export class CardActivitySource {
     }
 
     private onTouch( card: any ) {
+        console.log( card );
         this.activitySubject.next( { type: 'touch', timestamp: Date.now(), id: card.id } );
     }
 
     private onLeave( card: any ) {
+        console.log( card );
         this.activitySubject.next( { type: 'leave', timestamp: Date.now(), id: card.id } );
     }
     
     private onError( err: any ) {
+        console.log( err );
         this.activitySubject.next( { type: 'error', timestamp: Date.now(), message: err } );
     }
 
