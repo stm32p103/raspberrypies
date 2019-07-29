@@ -6,7 +6,9 @@ import { CardActivitySource } from './card-activity-source';
 
 const LENGTH = 10;
 
-// デバウンスは適当。数が減らせればよいが、根本解決ではない。区別がつかないから。
+// デバウンスは適当。数が減らせればよいが、根本解決ではない。区別がつかない。
+//IDが変わったら即1回とみなす、
+// 同じIDを受け取ったら5秒待機し、同じのが来なければ1回とみなす
 
 @Injectable()
 export class CardActivityService {
@@ -26,7 +28,7 @@ export class CardActivityService {
                         obs = timer( 5000 );
                     } else {
                         console.log( 'different' );
-                        obs = timer( 500 );
+                        obs = timer( 0 );
                     }
                     return obs;
                 } ),
@@ -45,8 +47,8 @@ export class CardActivityService {
     
     private onActivity( act: CardActivity ) {
         this.updateLatestActivity( act );
-//        console.log( '------------------');
-//        console.log( this.latestActivity );
+        console.log( '------------------');
+        console.log( this.latestActivity );
     }
     
     getLatestActivity() {

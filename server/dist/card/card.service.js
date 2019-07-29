@@ -30,7 +30,7 @@ let CardActivityService = class CardActivityService {
             }
             else {
                 console.log('different');
-                obs = rxjs_1.timer(500);
+                obs = rxjs_1.timer(0);
             }
             return obs;
         }), operators_1.tap(act => console.log(act.id))).subscribe(act => this.onActivity(act));
@@ -43,6 +43,8 @@ let CardActivityService = class CardActivityService {
     }
     onActivity(act) {
         this.updateLatestActivity(act);
+        console.log('------------------');
+        console.log(this.latestActivity);
     }
     getLatestActivity() {
         return this.latestActivity;
