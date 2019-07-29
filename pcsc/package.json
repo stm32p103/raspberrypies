@@ -15,11 +15,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nfc-pcsc": "^0.7.4",
-    "typescript": "^3.5.3"
+    "nfc-pcsc": "^0.7.4"
   },
   "devDependencies": {
     "nodemon": "^1.19.1",
-    "tsconfig-paths": "^3.8.0"
+    "tsconfig-paths": "^3.8.0",
+    "typescript": "^3.5.3"
   }
 }

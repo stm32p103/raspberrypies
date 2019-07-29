@@ -1,7 +1,9 @@
 // in ES6
 import { NFC } from 'nfc-pcsc';
+console.log( 'start' );
 
 const nfc = new NFC(); // optionally you can pass logger
+console.log( nfc );
 
 nfc.on('reader', reader => {
 

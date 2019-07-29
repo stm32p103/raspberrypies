@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const nfc_pcsc_1 = require("nfc-pcsc");
+console.log('start');
 const nfc = new nfc_pcsc_1.NFC();
+console.log(nfc);
 nfc.on('reader', reader => {
     console.log(`${reader.reader.name}  device attached`);
     reader.on('card', card => {
