@@ -1,6 +1,6 @@
-import { AppService } from './app.service';
+import { CardActivityService, CardActivity } from './card';
 export declare class AppController {
-    private readonly appService;
-    constructor(appService: AppService);
-    getHello(): string;
+    private readonly card;
+    constructor(card: CardActivityService);
+    root(): CardActivity[];
 }

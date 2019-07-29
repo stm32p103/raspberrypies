@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { CardActivityService, CardActivity } from './card';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
+    constructor(private readonly card: CardActivityService) {}
+    
+    @Get()
+    root(): CardActivity[] {
+        return this.card.getLatestActivity();
+    }
 }
