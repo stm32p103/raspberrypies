@@ -14,7 +14,6 @@ export interface CardTouchActivity extends CardActivityCommon {
 
 export interface CardLeaveActivity extends CardActivityCommon {
     type: 'leave';
-    id: string;
 }
 
 export interface CardErrorActivity extends CardActivityCommon {

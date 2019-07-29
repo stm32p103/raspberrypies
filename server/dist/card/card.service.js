@@ -16,6 +16,7 @@ let CardActivityService = class CardActivityService {
     constructor(src) {
         this.src = src;
         this.latestActivity = [];
+        console.log('CardActivitySource');
         this.src.activity$.subscribe(act => this.onActivity(act));
     }
     updateLatestActivity(act) {
@@ -31,6 +32,7 @@ let CardActivityService = class CardActivityService {
         console.log(this.latestActivity);
     }
     getLatestActivity() {
+        console.log(this.latestActivity);
         return this.latestActivity;
     }
 };

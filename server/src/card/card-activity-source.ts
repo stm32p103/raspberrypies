@@ -20,7 +20,6 @@ export class CardActivitySource {
         nfc.on( 'touchstart', ( card ) => this.onTouch( card ) );
         nfc.on( 'touchend',   ( card ) => this.onLeave( card ) );
         nfc.on( 'error',      ( err )  => this.onError( err ) ); 
-            
         nfc.start();
         
         this.activityObservable = this.activitySubject.pipe( publish() );
@@ -33,7 +32,7 @@ export class CardActivitySource {
 
     private onLeave( card: any ) {
         console.log( card );
-        this.activitySubject.next( { type: 'leave', timestamp: Date.now(), id: card.id } );
+        this.activitySubject.next( { type: 'leave', timestamp: Date.now() } );
     }
     
     private onError( err: any ) {

@@ -29,7 +29,7 @@ let CardActivitySource = class CardActivitySource {
     }
     onLeave(card) {
         console.log(card);
-        this.activitySubject.next({ type: 'leave', timestamp: Date.now(), id: card.id });
+        this.activitySubject.next({ type: 'leave', timestamp: Date.now() });
     }
     onError(err) {
         console.log(err);
