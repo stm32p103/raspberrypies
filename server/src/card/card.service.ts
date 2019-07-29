@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { CardActivity } from './type';
 import { CardActivitySource } from './card-activity-source';
 
@@ -10,7 +11,9 @@ export class CardActivityService {
     latestActivity: CardActivity[] = [];
     constructor( private src: CardActivitySource ) {
         console.log( 'CardActivitySource' );
-        this.src.activity$.subscribe( act => this.onActivity( act ) );
+        this.src.activity$.pipe( 
+                tap( act => this.onActivity( act ) ),
+                tap( act => console.log( 'act ') ) ).subscribe();
     }
 
     private updateLatestActivity( act: CardActivity ) {
