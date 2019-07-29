@@ -4,6 +4,7 @@ const nfc_pcsc_1 = require("nfc-pcsc");
 console.log('start');
 const nfc = new nfc_pcsc_1.NFC();
 console.log(nfc);
+console.log(`${reader.reader.name}  device attached`);
 nfc.on('reader', reader => {
     console.log(`${reader.reader.name}  device attached`);
     reader.on('card', card => {
