@@ -10,13 +10,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
+const rxjs_1 = require("rxjs");
+const operators_1 = require("rxjs/operators");
 const card_activity_source_1 = require("./card-activity-source");
 const LENGTH = 10;
 let CardActivityService = class CardActivityService {
     constructor(src) {
         this.src = src;
         this.latestActivity = [];
-        this.src.activity$.subscribe(act => this.onActivity(act));
+        this.lastId = '';
+        this.currentId = '';
+        this.src.activity$.pipe(operators_1.filter(act => act.type === 'touch'), operators_1.debounce((act) => {
+            let obs;
+            this.lastId = this.currentId;
+            this.currentId = act.id;
+            if (this.lastId == this.currentId) {
+                console.log('same');
+                obs = rxjs_1.timer(5000);
+            }
+            else {
+                console.log('different');
+                obs = rxjs_1.timer(500);
+            }
+            return obs;
+        })).subscribe(act => this.onActivity(act));
     }
     updateLatestActivity(act) {
         let tmp = [...this.latestActivity, act];

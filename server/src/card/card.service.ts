@@ -1,16 +1,35 @@
 import { Injectable } from '@nestjs/common';
-import { Observable, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { CardActivity } from './type';
+import { Observable, Subject, timer } from 'rxjs';
+import { tap, filter, debounce } from 'rxjs/operators';
+import { CardActivity, CardTouchActivity } from './type';
 import { CardActivitySource } from './card-activity-source';
 
 const LENGTH = 10;
 
+// デバウンスは適当。数が減らせればよいが、根本解決ではない。区別がつかないから。
+
 @Injectable()
 export class CardActivityService {
     latestActivity: CardActivity[] = [];
+    lastId: string = '';
+    currentId: string = '';
+
     constructor( private src: CardActivitySource ) {
-        this.src.activity$.subscribe( act => this.onActivity( act ) );
+        this.src.activity$.pipe(
+                filter( act => act.type === 'touch' ),
+                debounce( ( act: CardTouchActivity ) => {
+                    let obs: Observable<number>; 
+                    this.lastId = this.currentId;
+                    this.currentId = act.id;
+                    if( this.lastId == this.currentId ) {
+                        console.log( 'same' );
+                        obs = timer( 5000 );
+                    } else {
+                        console.log( 'different' );
+                        obs = timer( 500 );
+                    }
+                    return obs;
+                } ) ).subscribe( act => this.onActivity( act ) );
     }
 
     private updateLatestActivity( act: CardActivity ) {

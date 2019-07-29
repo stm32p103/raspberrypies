@@ -3,18 +3,16 @@
         <p-button label="update" (click)="update()"></p-button>
         
 	    <p-table [columns]="activityColumns" [value]="activities" selectionMode="single" (onRowSelect)="onSelect($event)">
-	        <ng-template pTemplate="header" let-columns>
+	        <ng-template pTemplate="header">
 		        <tr>
-			        <th *ngFor="let col of columns">
-			            {{col}}
-			        </th>
+                    <th>Time</th>
+                    <th>ID</th>
 		        </tr>
 	        </ng-template>
 	        <ng-template pTemplate="body" let-rowData let-columns="columns">
 		        <tr [pSelectableRow]="rowData">
-			        <td *ngFor="let col of columns">
-			            {{rowData[col]}}
-			        </td>
+                    <td>{{ rawData.timestamp | date:"yy/MM/dd HH:mm" }}</td>
+                    <td>{{ rawData.id }}</td>
 		        </tr>
 	        </ng-template>
 	   </p-table>
