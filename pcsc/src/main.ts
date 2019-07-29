@@ -1,5 +1,5 @@
 const NfcpyId = require('node-nfcpy-id').default;
-const nfc = new NfcpyId().start();
+const nfc = new NfcpyId( { mode: 'non-loop'} ).start();
  
 nfc.on('touchstart', (card) => {
   console.log('Card ID: ' + card.id);
@@ -17,6 +17,5 @@ nfc.on('touchend', () => {
 });
  
 nfc.on('error', (err) => {
-  // standard error output (color is red)
   console.error('\u001b[31m', err, '\u001b[0m');
 });
