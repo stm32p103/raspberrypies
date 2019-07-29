@@ -16,11 +16,11 @@ export class CardActivitySource {
     private nfc; 
 
     constructor() {
-        const nfc = new NfcpyId();
-        nfc.on( 'touchstart', ( card ) => this.onTouch( card ) );
-        nfc.on( 'touchend',   ( card ) => this.onLeave( card ) );
-        nfc.on( 'error',      ( err )  => this.onError( err ) ); 
-        nfc.start();
+        this.nfc = new NfcpyId();
+        this.nfc.on( 'touchstart', ( card ) => this.onTouch( card ) );
+        this.nfc.on( 'touchend',   ( card ) => this.onLeave( card ) );
+        this.nfc.on( 'error',      ( err )  => this.onError( err ) ); 
+        this.nfc.start();
         
         this.activityObservable = this.activitySubject.pipe( share() );
     }

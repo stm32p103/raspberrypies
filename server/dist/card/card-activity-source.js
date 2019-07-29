@@ -16,11 +16,11 @@ const NfcpyId = require('node-nfcpy-id').default;
 let CardActivitySource = class CardActivitySource {
     constructor() {
         this.activitySubject = new rxjs_1.Subject();
-        const nfc = new NfcpyId();
-        nfc.on('touchstart', (card) => this.onTouch(card));
-        nfc.on('touchend', (card) => this.onLeave(card));
-        nfc.on('error', (err) => this.onError(err));
-        nfc.start();
+        this.nfc = new NfcpyId();
+        this.nfc.on('touchstart', (card) => this.onTouch(card));
+        this.nfc.on('touchend', (card) => this.onLeave(card));
+        this.nfc.on('error', (err) => this.onError(err));
+        this.nfc.start();
         this.activityObservable = this.activitySubject.pipe(operators_1.share());
     }
     onTouch(card) {
