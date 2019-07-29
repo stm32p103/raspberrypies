@@ -24,15 +24,12 @@ let CardActivitySource = class CardActivitySource {
         this.activityObservable = this.activitySubject.pipe(operators_1.share());
     }
     onTouch(card) {
-        console.log(card);
         this.activitySubject.next({ type: 'touch', timestamp: Date.now(), id: card.id });
     }
     onLeave(card) {
-        console.log(card);
         this.activitySubject.next({ type: 'leave', timestamp: Date.now() });
     }
     onError(err) {
-        console.log(err);
         this.activitySubject.next({ type: 'error', timestamp: Date.now(), message: err });
     }
     get activity$() { return this.activityObservable; }

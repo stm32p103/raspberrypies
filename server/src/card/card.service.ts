@@ -11,9 +11,7 @@ export class CardActivityService {
     latestActivity: CardActivity[] = [];
     constructor( private src: CardActivitySource ) {
         console.log( 'CardActivitySource' );
-        this.src.activity$.pipe( 
-                tap( act => this.onActivity( act ) ),
-                tap( act => console.log( 'act ') ) ).subscribe();
+        this.src.activity$.subscribe( act => this.onActivity( act ) );
     }
 
     private updateLatestActivity( act: CardActivity ) {
@@ -21,6 +19,8 @@ export class CardActivityService {
         
         let start = Math.max( tmp.length - LENGTH, 0 );
         let end = start + Math.min( tmp.length, LENGTH );
+        
+        console.log( '[  ' + start + ' - ' + end + ' ]' )
         tmp.slice( start, end );
         
         this.latestActivity = tmp;
