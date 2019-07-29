@@ -15,7 +15,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nfc-pcsc": "^0.7.4"
+    "nfc-pcsc": "^0.7.4",
+    "node-nfcpy-id": "^0.1.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1",
