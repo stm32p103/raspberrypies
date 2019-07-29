@@ -1,0 +1,25 @@
+{
+  "name": "simple-trigger",
+  "version": "0.0.0",
+  "description": "Simple build trigger.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "build:watch": "tsc -w -p tsconfig.build.json",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "start": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start:dev": "nodemon",
+    "start:debug": "nodemon --config nodemon-debug.json",
+    "start:raspi": "nodemon --config nodemon-raspi.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nfc-pcsc": "^0.7.4",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "tsconfig-paths": "^3.8.0"
+  }
+}
