@@ -10,7 +10,6 @@ const LENGTH = 10;
 export class CardActivityService {
     latestActivity: CardActivity[] = [];
     constructor( private src: CardActivitySource ) {
-        console.log( 'CardActivitySource' );
         this.src.activity$.subscribe( act => this.onActivity( act ) );
     }
 
@@ -20,19 +19,19 @@ export class CardActivityService {
         let start = Math.max( tmp.length - LENGTH, 0 );
         let end = start + Math.min( tmp.length, LENGTH );
         
-        console.log( '[  ' + start + ' - ' + end + ' ]' )
+//        console.log( '[  ' + start + ' - ' + end + ' ]' )
         
         this.latestActivity = tmp.slice( start, end );
     }
     
     private onActivity( act: CardActivity ) {
         this.updateLatestActivity( act );
-        console.log( '------------------');
-        console.log( this.latestActivity );
+//        console.log( '------------------');
+//        console.log( this.latestActivity );
     }
     
     getLatestActivity() {
-        console.log( this.latestActivity );
+//        console.log( this.latestActivity );
         return this.latestActivity;
     }
 }

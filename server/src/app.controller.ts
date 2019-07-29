@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { CardActivityService, CardActivity } from './card';
 
-@Controller()
+@Controller( 'card' )
 export class AppController {
     constructor( private readonly card: CardActivityService ) {}
     

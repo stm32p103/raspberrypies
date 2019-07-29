@@ -26,7 +26,7 @@ __decorate([
     __metadata("design:returntype", Array)
 ], AppController.prototype, "root", null);
 AppController = __decorate([
-    common_1.Controller(),
+    common_1.Controller('card'),
     __metadata("design:paramtypes", [card_1.CardActivityService])
 ], AppController);
 exports.AppController = AppController;

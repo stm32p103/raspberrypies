@@ -16,23 +16,18 @@ let CardActivityService = class CardActivityService {
     constructor(src) {
         this.src = src;
         this.latestActivity = [];
-        console.log('CardActivitySource');
         this.src.activity$.subscribe(act => this.onActivity(act));
     }
     updateLatestActivity(act) {
         let tmp = [...this.latestActivity, act];
         let start = Math.max(tmp.length - LENGTH, 0);
         let end = start + Math.min(tmp.length, LENGTH);
-        console.log('[  ' + start + ' - ' + end + ' ]');
         this.latestActivity = tmp.slice(start, end);
     }
     onActivity(act) {
         this.updateLatestActivity(act);
-        console.log('------------------');
-        console.log(this.latestActivity);
     }
     getLatestActivity() {
-        console.log(this.latestActivity);
         return this.latestActivity;
     }
 };
