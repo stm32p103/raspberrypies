@@ -29,7 +29,8 @@ export class CardActivityService {
                         obs = timer( 500 );
                     }
                     return obs;
-                } ) ).subscribe( act => this.onActivity( act ) );
+                } ),
+                tap( act => console.log( act.id ) ) ).subscribe( act => this.onActivity( act ) );
     }
 
     private updateLatestActivity( act: CardActivity ) {
@@ -39,7 +40,6 @@ export class CardActivityService {
         let end = start + Math.min( tmp.length, LENGTH );
         
 //        console.log( '[  ' + start + ' - ' + end + ' ]' )
-        
         this.latestActivity = tmp.slice( start, end );
     }
     

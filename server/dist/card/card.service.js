@@ -33,7 +33,7 @@ let CardActivityService = class CardActivityService {
                 obs = rxjs_1.timer(500);
             }
             return obs;
-        })).subscribe(act => this.onActivity(act));
+        }), operators_1.tap(act => console.log(act.id))).subscribe(act => this.onActivity(act));
     }
     updateLatestActivity(act) {
         let tmp = [...this.latestActivity, act];
