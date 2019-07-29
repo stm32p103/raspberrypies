@@ -24,8 +24,7 @@ let CardActivityService = class CardActivityService {
         let start = Math.max(tmp.length - LENGTH, 0);
         let end = start + Math.min(tmp.length, LENGTH);
         console.log('[  ' + start + ' - ' + end + ' ]');
-        tmp.slice(start, end);
-        this.latestActivity = tmp;
+        this.latestActivity = tmp.slice(start, end);
     }
     onActivity(act) {
         this.updateLatestActivity(act);

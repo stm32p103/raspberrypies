@@ -21,9 +21,8 @@ export class CardActivityService {
         let end = start + Math.min( tmp.length, LENGTH );
         
         console.log( '[  ' + start + ' - ' + end + ' ]' )
-        tmp.slice( start, end );
         
-        this.latestActivity = tmp;
+        this.latestActivity = tmp.slice( start, end );
     }
     
     private onActivity( act: CardActivity ) {
