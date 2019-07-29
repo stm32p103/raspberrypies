@@ -6,7 +6,7 @@ export class AppController {
     constructor( private readonly card: CardActivityService ) {}
     
     @Get()
-    root(): CardActivity[] {
+    getActivity(): CardActivity[] {
         return this.card.getLatestActivity();
     }
 }

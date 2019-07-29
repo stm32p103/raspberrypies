@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"p-grid\">\r\n    <div class=\"p-col-8\">\r\n        <div class=\"p-grid\">\r\n            <div class=\"p-col-7\">\r\n                <p-panel header=\"Panel 1\">\r\n                     <h3 class=\"first\">OK</h3>\r\n                     <p-button label=\"Button 1\"></p-button>\r\n                 </p-panel>\r\n            </div>\r\n            <div class=\"p-col-5\">\r\n                <p-panel header=\"Panel 2\">\r\n                     <h3 class=\"first\">OK</h3>\r\n                     <p-button label=\"Button 2\"></p-button>\r\n                 </p-panel>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"p-col-4\">\r\n        <p-panel header=\"Panel 1\">\r\n            <h3 class=\"first\">OK</h3>\r\n            <p-button label=\"Button 1\"></p-button>\r\n        </p-panel>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div class=\"p-grid\">\r\n    <p-panel header=\"Log\" class=\"p-col-6 p-offset-3\">\r\n        <p-button label=\"update\" (click)=\"update()\"></p-button>\r\n        \r\n\t    <p-table [columns]=\"activityColumns\" [value]=\"activities\" selectionMode=\"single\" (onRowSelect)=\"onSelect($event)\">\r\n\t        <ng-template pTemplate=\"header\" let-columns>\r\n\t\t        <tr>\r\n\t\t\t        <th *ngFor=\"let col of columns\">\r\n\t\t\t            {{col}}\r\n\t\t\t        </th>\r\n\t\t        </tr>\r\n\t        </ng-template>\r\n\t        <ng-template pTemplate=\"body\" let-rowData let-columns=\"columns\">\r\n\t\t        <tr [pSelectableRow]=\"rowData\">\r\n\t\t\t        <td *ngFor=\"let col of columns\">\r\n\t\t\t            {{rowData[col]}}\r\n\t\t\t        </td>\r\n\t\t        </tr>\r\n\t        </ng-template>\r\n\t   </p-table>\r\n    </p-panel>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -57,17 +57,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(http) {
+        this.http = http;
+        this.activities = [];
+        this.activityColumns = ['timestamp', 'event'];
     }
+    AppComponent.prototype.update = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var result;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.http.get('/card').toPromise()];
+                    case 1:
+                        result = _a.sent();
+                        if (result) {
+                            this.activities = result;
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AppComponent.prototype.onSelect = function (event) {
+        console.log(event);
+    };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], AppComponent);
     return AppComponent;
 }());

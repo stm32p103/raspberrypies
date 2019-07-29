@@ -15,7 +15,7 @@ let AppController = class AppController {
     constructor(card) {
         this.card = card;
     }
-    root() {
+    getActivity() {
         return this.card.getLatestActivity();
     }
 };
@@ -24,7 +24,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Array)
-], AppController.prototype, "root", null);
+], AppController.prototype, "getActivity", null);
 AppController = __decorate([
     common_1.Controller('card'),
     __metadata("design:paramtypes", [card_1.CardActivityService])
